@@ -5,7 +5,7 @@ bot.start((ctx) => ctx.reply('Welcome'));
 bot.use(session())
 bot.on("message", async (ctx) => {
     //msg = await ctx.message.text;
-    await ctx.reply(ctx.update.update_id)
+    await ctx.reply(ctx.update)
 });
 bot.launch();
 
