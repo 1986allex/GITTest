@@ -3,9 +3,9 @@ const { Telegraf, session } = require('telegraf');
 const bot = new Telegraf("6082306857:AAF_vGCBs91VLz6vZh0RLxqBwHt837wpZOo");
 bot.start((ctx) => ctx.reply('Welcome'));
 bot.use(session())
-bot.hears('hi', (ctx) => {
+bot.on("message", async (ctx) => {
     ctx.session.msg = ctx.message.text;
-    ctx.reply(ctx.message.text)
+    await ctx.reply(ctx.message.text)
 });
 bot.launch();
 
