@@ -13,7 +13,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 app.get('/', (req, res) => {
-  res.send('<div onclick="alert(' + msg + ')">sddfsdf</div>')
+  res.send('<div onclick="alert(' + msg.toString() + ')">sddfsdf</div>')
 })
 app.listen(port, () => {
 })
