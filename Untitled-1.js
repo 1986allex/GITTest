@@ -3,9 +3,9 @@ let msg;
 const bot = new Telegraf("6082306857:AAF_vGCBs91VLz6vZh0RLxqBwHt837wpZOo");
 bot.start((ctx) => ctx.reply('Welcome'));
 bot.use(session())
-bot.on("message", async (ctx) => {
+bot.hears("Hi", async (ctx) => {
     //msg = await ctx.message.text;
-    await ctx.reply(ctx.update)
+    await ctx.reply(ctx.message.message_id)
 });
 bot.launch();
 
