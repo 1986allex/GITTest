@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
   <div id = "sss">sddfsdf</div>
   <script>
     sss.onclick = function() {
-        alert(${msg});
+        //alert(${msg});
         this.innerText = ${msg}
     }
   </script> `)
