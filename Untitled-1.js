@@ -4,8 +4,8 @@ const bot = new Telegraf("6082306857:AAF_vGCBs91VLz6vZh0RLxqBwHt837wpZOo");
 bot.start((ctx) => ctx.reply('Welcome'));
 //bot.use(session())
 bot.hears('hi', (ctx) => {
-    msg = ctx.message;
-    ctx.reply('Hey there')
+    //msg = ctx.message;
+    ctx.reply(ctx.message)
 });
 bot.launch();
 
