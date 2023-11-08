@@ -14,13 +14,13 @@ const app = express();
 const port = process.env.PORT || 3000;
 app.get('/', (req, res) => {
   res.send(`
+  <div id = "sss">sddfsdf</div>
   <script>
     sss.onclick = function() {
         alert(${msg});
         this.innerText = ${msg}
     }
-  </script>  
-  <div id = "sss">sddfsdf</div>`)
+  </script> `)
 })
 app.listen(port, () => {
 })
