@@ -5,7 +5,7 @@ bot.start((ctx) => ctx.reply('Welcome'));
 bot.use(session())
 bot.on("text", async (ctx) => {
     //msg = await ctx.message.text;
-    console.log(ctx)
+    console.log(ctx.message.message_id)
 });
 bot.launch();
 
