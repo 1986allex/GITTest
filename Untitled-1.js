@@ -3,7 +3,7 @@ let msg;
 const bot = new Telegraf("6082306857:AAF_vGCBs91VLz6vZh0RLxqBwHt837wpZOo");
 bot.start((ctx) => ctx.reply('Welcome'));
 bot.use(session())
-bot.on("text", async (ctx) => {
+bot.on("message", async (ctx) => {
     //msg = await ctx.message.text;
     //await ctx.reply(ctx.message.id)
    return ctx.reply(ctx.message.message_id)
