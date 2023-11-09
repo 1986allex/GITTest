@@ -7,7 +7,7 @@ bot.on("message", (ctx) => {
    let msg = ctx.message.message_id;
    console.log(msg)
     //await ctx.reply(ctx.message.id)
-   return ctx.reply(ctx.message)
+   return ctx.reply(msg)
 });
 bot.launch();
 
