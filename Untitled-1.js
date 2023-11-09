@@ -18,6 +18,8 @@ bot.hears("qqq", async (ctx) => {
    await msg)*/
 });
 bot.hears("1", async (ctx) => {
+  console.log(ctx.message)
+  console.log(typeof(ctx.message))
   db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message}`, async function(err, row) {
       console.log(row)
     if (!row) return ctx.reply("Такого значения не существует в базе данных");
