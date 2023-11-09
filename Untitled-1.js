@@ -3,12 +3,14 @@ const bot = new Telegraf("6082306857:AAF_vGCBs91VLz6vZh0RLxqBwHt837wpZOo");
 let sqlite3 = require('sqlite3').verbose();
 let db = new sqlite3.Database("example.db");
 
-bot.start((ctx) => ctx.reply('Welcome'));
+bot.start((ctx) => {
+  ctx.reply('Welcome');
+  db.run("CREATE TABLE IF NOT EXISTS Tbl (id INTEGER PRIMARY KEY, name TEXT)");
+});
 bot.use(session())
 bot.on("message", async (ctx) => {
-    await db.run("CREATE TABLE IF NOT EXISTS Tbl (id INTEGER PRIMARY KEY, name TEXT)");
-    await db.run("INSERT INTO Tbl (name) VALUES ('bar')");
-    await db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message}`, async function(err, row) {
+    db.run("INSERT INTO Tbl (name) VALUES ('bar')");
+    db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message}`, async function(err, row) {
         if (!row) return ctx.reply("Такого значения не существует в базе данных");
         return ctx.reply(row.name)
     })
