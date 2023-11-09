@@ -6,7 +6,7 @@ bot.use(session())
 bot.on("text", async (ctx) => {
     //msg = await ctx.message.text;
     //await ctx.reply(ctx.message.id)
-    await ctx.reply(ctx.message.message_id)
+   return ctx.reply(ctx.message.message_id)
 });
 bot.launch();
 
