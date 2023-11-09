@@ -10,8 +10,9 @@ bot.start((ctx) => {
 bot.use(session())
 bot.on("message", async (ctx) => {
     db.run("INSERT INTO Tbl (name) VALUES ('bar')");
-    db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message}`, async function(err, row) {
-        if (!row) return ctx.reply("Такого значения не существует в базе данных");
+    db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message.toNumber()}`, async function(err, row) {
+        console.log(row)
+      if (!row) return ctx.reply("Такого значения не существует в базе данных");
         return ctx.reply(row.name)
     })
    /*let msg = ctx.message.message_id;
