@@ -1,13 +1,19 @@
 const { Telegraf, session } = require('telegraf');
-//let msg;
 const bot = new Telegraf("6082306857:AAF_vGCBs91VLz6vZh0RLxqBwHt837wpZOo");
+let sqlite3 = require('sqlite3').verbose();
+let db = new sqlite3.Database("example.db");
+
 bot.start((ctx) => ctx.reply('Welcome'));
 bot.use(session())
 bot.on("message", async (ctx) => {
-   let msg = ctx.message.message_id;
+    db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message}`, async function(err, row) {
+        if (!row) return res.send("Такого значения не существует в базе данных");
+        return ctx.reply(row.name)
+    })
+   /*let msg = ctx.message.message_id;
    console.log(msg)
     //await ctx.reply(ctx.message.id)
-   await ctx.reply(msg)
+   await msg)*/
 });
 bot.launch();
 
