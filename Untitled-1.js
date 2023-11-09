@@ -7,7 +7,7 @@ bot.start((ctx) => ctx.reply('Welcome'));
 bot.use(session())
 bot.on("message", async (ctx) => {
     db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message}`, async function(err, row) {
-        if (!row) return res.send("Такого значения не существует в базе данных");
+        if (!row) return ctx.reply("Такого значения не существует в базе данных");
         return ctx.reply(row.name)
     })
    /*let msg = ctx.message.message_id;
