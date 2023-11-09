@@ -9,7 +9,9 @@ bot.start((ctx) => {
 });
 bot.use(session())
 bot.hears("qqq", async (ctx) => {
-    db.run("INSERT INTO Tbl (name) VALUES ('bar')");
+    db.run("INSERT INTO Tbl (name) VALUES ('bar')", () => {
+      console.log("done")
+    });
    /*let msg = ctx.message.message_id;
    console.log(msg)
     //await ctx.reply(ctx.message.id)
