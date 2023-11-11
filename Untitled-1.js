@@ -10,7 +10,7 @@ bot.start((ctx) => {
 bot.use(session())
 bot.hears(/\d/, ctx => {
   console.log("row")
-  db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message.text}`, async function(err, row) {
+  db.get(`SELECT * FROM Tbl WHERE id = ${Number(ctx.message.text)}`, async function(err, row) {
     console.log(row)
   if (!row) return ctx.reply("Такого значения не существует в базе данных");
     return ctx.reply(row.name)
