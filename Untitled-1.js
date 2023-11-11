@@ -16,13 +16,13 @@ bot.hears("\d", ctx => {
     return ctx.reply(row.name)
 })
 })
-bot.on("message", async (ctx) => {
+/*bot.on("message", async (ctx) => {
     db.run(`INSERT INTO Tbl (name) VALUES (${ctx.message.text})`, () => {
       console.log("done")
     });
     
    
-});
+});*/
 
 bot.launch();
 
