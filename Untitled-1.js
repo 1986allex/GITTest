@@ -8,9 +8,9 @@ bot.start((ctx) => {
   db.run("CREATE TABLE IF NOT EXISTS Tbl (id INTEGER PRIMARY KEY, name TEXT)");
 });
 bot.use(session())
-bot.hears(/\d/, ctx => {
+bot.hears(/\d/, async ctx => {
   console.log(typeof(Number(ctx.message.text)))
-  db.get(`SELECT * FROM Tbl WHERE id = ${Number(ctx.message.text)}`, async function(err, row) {
+  await db.get(`SELECT * FROM Tbl WHERE id = ${Number(ctx.message.text)}`, async function(err, row) {
     console.log(row)
   if (!row) return ctx.reply("Такого значения не существует в базе данных");
     return ctx.reply(row.name)
