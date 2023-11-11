@@ -8,15 +8,18 @@ bot.start((ctx) => {
   db.run("CREATE TABLE IF NOT EXISTS Tbl (id INTEGER PRIMARY KEY, name TEXT)");
 });
 bot.use(session())
+bot.hears("\d", ctx => {
+  db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message.text}`, async function(err, row) {
+    console.log(row)
+  if (!row) return ctx.reply("Такого значения не существует в базе данных");
+    return ctx.reply(row.name)
+})
+})
 bot.on("message", async (ctx) => {
     db.run(`INSERT INTO Tbl (name) VALUES (${ctx.message.text})`, () => {
       console.log("done")
     });
-    db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message.text}`, async function(err, row) {
-      console.log(row)
-    if (!row) return ctx.reply("Такого значения не существует в базе данных");
-      return ctx.reply(row.name)
-  })
+    
    
 });
 
