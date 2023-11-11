@@ -8,7 +8,7 @@ bot.start((ctx) => {
   db.run("CREATE TABLE IF NOT EXISTS Tbl (id INTEGER PRIMARY KEY, name TEXT)");
 });
 bot.use(session())
-bot.hears("\d", ctx => {
+bot.hears(/\d/, ctx => {
   console.log("row")
   db.get(`SELECT * FROM Tbl WHERE id = ${ctx.message.text}`, async function(err, row) {
     console.log(row)
@@ -16,13 +16,13 @@ bot.hears("\d", ctx => {
     return ctx.reply(row.name)
 })
 })
-/*bot.on("message", async (ctx) => {
+bot.on("message", async (ctx) => {
     db.run(`INSERT INTO Tbl (name) VALUES (${ctx.message.text})`, () => {
       console.log("done")
     });
     
    
-});*/
+});
 
 bot.launch();
 
