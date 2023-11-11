@@ -17,7 +17,7 @@ bot.hears(/\d/, async ctx => {
 })
 })
 bot.on("message", async (ctx) => {
-    db.run(`INSERT INTO Tbl (name) VALUES (${ctx.message.text})`, () => {
+    db.run(`INSERT INTO Tbl (name) VALUES ("sdgdfgdfg")`, () => {
       console.log("done")
     });
     
